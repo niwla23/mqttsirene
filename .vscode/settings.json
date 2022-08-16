@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "*.asm": "asm-intel-x86-generic",
+    "*.items": "openhab",
+    "deque": "cpp",
+    "list": "cpp",
+    "string": "cpp",
+    "vector": "cpp"
+  }
+}
