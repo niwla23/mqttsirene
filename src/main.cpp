@@ -137,13 +137,11 @@ void callback(char* topic, byte* payload, unsigned int length) {
         strcpy(last_alarm_state_topic, mqtt_alarms_state_topic_prefix);
         strcat(last_alarm_state_topic, "/");
         strcat(last_alarm_state_topic, previous_alarm_char);
-        strcat(last_alarm_state_topic, "/state");
 
         char current_alarm_state_topic[strlen(mqtt_alarms_state_topic_prefix) + 20];
         strcpy(current_alarm_state_topic, mqtt_alarms_state_topic_prefix);
         strcat(current_alarm_state_topic, "/");
         strcat(current_alarm_state_topic, current_alarm_char);
-        strcat(current_alarm_state_topic, "/state");
 
         client.publish(last_alarm_state_topic, "OFF");
         client.publish(current_alarm_state_topic, "ON");
