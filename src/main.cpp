@@ -23,6 +23,14 @@ int current_alarm = 0;
 
 std::string mqtt_alarms_topic_prefix(mqtt_alarms_topic);
 
+void playAlertSound() {
+    if (beepIfNoConnection) {
+        tone(pin, 30);
+        delay(1);
+        noTone(pin);
+    }
+}
+
 void setup_wifi() {
     delay(10);
     // We start by connecting to a WiFi network
@@ -36,7 +44,8 @@ void setup_wifi() {
     WiFi.setAutoReconnect(true);
 
     while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
+        delay(5000);
+        playAlertSound();
         Serial.print(".");
     }
 
@@ -52,9 +61,7 @@ void reconnect() {
     // Loop until we're reconnected
     while (!client.connected()) {
         setup_wifi();
-        tone(pin, 1000);
-        delay(50);
-        noTone(pin);
+        playAlertSound();
         Serial.print("Attempting MQTT connection...");
         // Create a random client ID
         String clientId = "ESP8266Client-";
@@ -73,8 +80,8 @@ void reconnect() {
             delay(5000);
         }
     }
-    tone(pin, 3000);
-    delay(500);
+    tone(pin, 1800);
+    delay(3);
     noTone(pin);
 }
 

@@ -15,3 +15,4 @@ const char* mqtt_alarm_state_topic = "sirens/alwin2/state/alarm";
 const char* mqtt_availability_topic = "sirens/alwin2/availability";
 const uint8_t pin = 5;
 const int baseFrequency = 1000;
+const bool beepIfNoConnection = false;
